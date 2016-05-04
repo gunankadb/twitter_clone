@@ -8,7 +8,8 @@ module ApplicationHelper
 	end
 
 	def handle_link(handle)
-	    link_to("@#{handle}" , home_twitters_path(handle: handle), :class => "popover-twitter", :rel => "popover", :"data-placement" => "bottom", :title => "#{handle}", :"data-content" => "#{render 'twitter_modal', :handle => handle}", :"data-target" => 'modal_id') 	
+	    link_to "@#{handle}" , home_twitters_path(handle: handle), :class => "popover-twitter", :rel => "popover", :"data-placement" => "bottom", :title => "#{handle}" 
+	    #link_to("@#{handle}" , home_twitters_path(handle: handle), :class => "popover-twitter", :rel => "popover", :"data-placement" => "bottom", :title => "#{handle}", :"data-content" => "#{render 'twitter_modal', :handle => handle}", :"data-target" => 'modal_id') 	
 	end
 
 	def twitter_client

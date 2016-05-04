@@ -11,18 +11,14 @@ class TwittersController < ApplicationController
 
   def hash
   	if params[:handle]
-  		cache(@tweets, :expires_in => 5.minutes) do 
-  			@tweets = twitter_client.search("##{params[:handle]}")
-  		end	
+  		@tweets = twitter_client.search("##{params[:handle]}")
   	end	
   	render action: :home
   end
 
   def search
   	if params[:search]
-  		cache(@tweets, :expires_in => 5.minutes) do 
-  			@tweets = twitter_client.search("#{params[:search]}")
-  		end	
+  		@tweets = twitter_client.search("#{params[:search]}")
   	end	
   	render action: :home
   end

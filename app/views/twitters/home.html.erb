@@ -6,14 +6,16 @@
 <%end%>
 <table class="table table-striped" >
   <tbody>
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%=link_to "#{tweet.user.name} @#{tweet.user.screen_name} ", home_twitters_path(handle: tweet.user.screen_name)%><%= "  #{tweet.created_at.strftime('%B %d, %Y')}"%><br/>
-        <%= auto_link(render_with_hashtags(tweet.text)).html_safe%>
-        <br/>
-        <%=image_tag(tweet.media[0]["media_url"] ,class: "thumbnail img-responsive") if(tweet.media.present?)%> </td>       
-      </tr>
-    <% end %>
+    <%  cache(@tweets, :expires_in => 5.minutes) do %>
+      <% @tweets.each do |tweet| %>
+        <tr>
+          <td><%=link_to "#{tweet.user.name} @#{tweet.user.screen_name} ", home_twitters_path(handle: tweet.user.screen_name)%><%= "  #{tweet.created_at.strftime('%B %d, %Y')}"%><br/>
+          <%= auto_link(render_with_hashtags(tweet.text)).html_safe%>
+          <br/>
+          <%=image_tag(tweet.media[0]["media_url"] ,class: "thumbnail img-responsive") if(tweet.media.present?)%> </td>       
+        </tr>
+      <% end %>
+    <%end%>  
   </tbody>
 </table>
 <script type="text/javascript">
