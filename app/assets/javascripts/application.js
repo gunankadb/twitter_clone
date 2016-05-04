@@ -14,10 +14,3 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(function () {
-      $('.popover-history').popover({ html : true });
-    });
-  });
-</script>
