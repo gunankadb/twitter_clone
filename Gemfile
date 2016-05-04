@@ -49,5 +49,8 @@ gem 'unicorn'
 group :development do
 	gem 'thin'
 	gem 'sqlite3'
-
 end	
+
+group :production do
+  gem 'rails_12factor'
+end
