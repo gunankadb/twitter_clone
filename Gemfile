@@ -51,7 +51,7 @@ gem 'unicorn'
 # 	gem 'sqlite3'
 # end	
 
-gem 'sqlite3'
+#gem 'sqlite3'
 
 group :production do
   gem 'rails_12factor'
