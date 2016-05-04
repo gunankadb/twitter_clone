@@ -66,5 +66,4 @@ TwitterClone::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   config.cache_store = :mem_cache_store
 
-  config.assets.initialize_on_precompile = false
 end
