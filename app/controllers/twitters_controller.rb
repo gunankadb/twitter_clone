@@ -11,14 +11,14 @@ class TwittersController < ApplicationController
 
   def hash
   	if params[:handle]
-  		@tweets = twitter_client.search("##{params[:handle]}")
+  		@tweets = twitter_client.search("##{params[:handle]}",:result_type => "recent").take(20)
   	end	
   	render action: :home
   end
 
   def search
   	if params[:search]
-  		@tweets = twitter_client.search("#{params[:search]}")
+  		@tweets = twitter_client.search("#{params[:search]}",:result_type => "recent").take(20)
   	end	
   	render action: :home
   end
