@@ -46,10 +46,12 @@ gem 'unicorn'
 
 # To use debugger
 # gem 'debugger'
-group :development do
-	gem 'thin'
-	gem 'sqlite3'
-end	
+# group :development do
+# 	gem 'thin'
+# 	gem 'sqlite3'
+# end	
+
+gem 'sqlite3'
 
 group :production do
   gem 'rails_12factor'
