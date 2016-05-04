@@ -1,0 +1,18 @@
+<%require 'rails_autolink' %>
+<h1>My Twitter</h1>
+<%=form_tag search_twitters_path, :class => "form-horizontal" do%>
+      <input name="search" type="textarea" style="float: right" placeholder = "Search"   />
+      <input type="submit" style="position: absolute; right: -9999px; width: 1px; height: 1px;"/><br/>
+<%end%>
+<table class="table table-striped" >
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%=link_to "#{tweet.user.name} @#{tweet.user.screen_name} ", home_twitters_path(handle: tweet.user.screen_name)%><%= "  #{tweet.created_at.strftime('%B %d, %Y')}"%><br/>
+        <%= auto_link(render_with_hashtags(tweet.text)).html_safe%>
+        <br/>
+        <%=image_tag(tweet.media[0]["media_url"] ,class: "thumbnail img-responsive") if(tweet.media.present?)%> </td>       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
