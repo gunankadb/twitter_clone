@@ -5,9 +5,6 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -42,7 +39,7 @@ gem 'pg'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -51,4 +48,6 @@ gem 'pg'
 # gem 'debugger'
 group :development do
 	gem 'thin'
+	gem 'sqlite3'
+
 end	
