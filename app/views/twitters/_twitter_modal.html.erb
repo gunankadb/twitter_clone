@@ -2,13 +2,15 @@
   <tbody>
       <tr>
         <td>
-          <%='Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii'%>
-          <%#=twitter_client.user(handle)%>
-          <%#=link_to "#{tweet.user.name} @#{tweet.user.screen_name}", home_twitters_path(handle: tweet.user.screen_name)%><%#= "  #{tweet.created_at.strftime('%B %d, %Y')}"%>
-          <br/>
-          <%#= auto_link(render_with_hashtags(tweet.text)).html_safe%>
-          <br/>
-          <%#=image_tag(tweet.media[0]["media_url"] ,class: "thumbnail img-responsive") if(tweet.media.present?)%> 
+          <%cache(user, :expires_in => 5.minutes) do %>
+            <%=image_tag(user.profile_image_url ,class: "thumbnail img-responsive") %> <%#=user.name%>
+            <br/>
+            <%=user.description%>
+            <br/><br/>
+            <b>Tweets:</b> <%=user.statuses_count%> 
+            <b>Following:</b> <%=user.friends_count%>
+            <b>Followers:</b> <%=user.followers_count%>
+          <%end%>  
         </td>       
       </tr>
   </tbody>

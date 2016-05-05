@@ -1,0 +1,1 @@
+<%=link_to("@#{@handle}" , home_twitters_path(handle: @handle), :class => 'btn tbtn', :id => "popover-twitter",  "data-content" => @handle,"data-trigger"=> "hover" , :rel => 'popover', "data-placement" => "up", "data-original-title"=>@handle, "data-html" => "true")%>

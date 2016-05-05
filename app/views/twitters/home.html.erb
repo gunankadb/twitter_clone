@@ -9,7 +9,10 @@
     <%  cache(@tweets, :expires_in => 5.minutes) do %>
       <% @tweets.each do |tweet| %>
         <tr>
-          <td><%=link_to "#{tweet.user.name} @#{tweet.user.screen_name} ", home_twitters_path(handle: tweet.user.screen_name)%><%= "  #{tweet.created_at.strftime('%B %d, %Y')}"%><br/>
+          <td>
+          <%user=tweet.user%>
+          <%=link_to "#{user.name} @#{user.screen_name} " , home_twitters_path(handle: user.screen_name), :class => 'btn', :id => "popover-twitter",  :"data-content" => "#{render 'twitter_modal', :user => user}","data-trigger"=> "hover" , :rel => 'popover', "data-placement" => "up", "data-original-title"=>user.screen_name, "data-html" => "true" %>
+          <%= "  #{tweet.created_at.strftime('%B %d, %Y')}"%><br/>
           <%= auto_link(render_with_hashtags(tweet.text)).html_safe%>
           <br/>
           <%=image_tag(tweet.media[0]["media_url"] ,class: "thumbnail img-responsive") if(tweet.media.present?)%> </td>       
@@ -18,10 +21,3 @@
     <%end%>  
   </tbody>
 </table>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(function () {
-      $('.popover-history').popover({ html : true });
-    });
-  });
-</script>

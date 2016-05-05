@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-min.js
+//= require bootstrap-tooltip.js
+//= require bootstrap-popover.js
 //= require_tree .

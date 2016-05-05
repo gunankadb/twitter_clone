@@ -1,4 +1,5 @@
 module ApplicationHelper
+	
 	def render_with_hashtags(text)
 	  text1 = text.gsub(/(?:@(\w+))/) {handle_link($1)}
 	  text2 = text1.gsub(/(?:#(\w+))/) {hashtag_link($1)}
@@ -8,8 +9,9 @@ module ApplicationHelper
 	end
 
 	def handle_link(handle)
-	    link_to "@#{handle}" , home_twitters_path(handle: handle), :class => "popover-twitter", :rel => "popover", :"data-placement" => "bottom", :title => "#{handle}" 
-	    #link_to("@#{handle}" , home_twitters_path(handle: handle), :class => "popover-twitter", :rel => "popover", :"data-placement" => "bottom", :title => "#{handle}", :"data-content" => "#{render 'twitter_modal', :handle => handle}", :"data-target" => 'modal_id') 	
+	    #user = twitter_client.user(handle)
+        link_to("@#{handle}" , home_twitters_path(handle: handle), :class => 'btn tbtn', :id => "popover-twitter",  "data-content" => handle,"data-trigger"=> "hover" , :rel => 'popover', "data-placement" => "up", "data-original-title"=>handle, "data-html" => "true")	
+        #concat(render(:partial => 'handle_link', handle: handle))	
 	end
 
 	def twitter_client
